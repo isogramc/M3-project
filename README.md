@@ -129,7 +129,7 @@ address - String
 
 ### Trello/Kanban
 
-[Link to your trello board](https://trello.com) or picture of your physical board
+[Link to Project Kanban board](https://github.com/users/isogramc/projects/5)
 
 ### Git
 
