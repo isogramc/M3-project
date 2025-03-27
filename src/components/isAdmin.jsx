@@ -8,7 +8,7 @@ function IsAdmin({ children }) {
   // If the authentication is still loading ⏳
   if (isLoading) return <p>Loading ...</p>;
 
-  if (isLoggedIn && IsAdmin) {
+  if (isLoggedIn && IsAdminUser) {
     // If the user is logged in, navigate to the admin dashboard ❌    
     return <Navigate to="/admin/dashboard" />;
   } else {

@@ -7,18 +7,17 @@ const API_URL = import.meta.env.VITE_API_URL;
 
 function EventCreatePage() {
 
-    const [numberOfGuests, setnumberOfGuests] = useState("");
+  const [numberOfGuests, setnumberOfGuests] = useState("");
   const [name, setName] = useState("");
   const [errorMessage, setErrorMessage] = useState(undefined);
 
-    const navigate = useNavigate();
+  const navigate = useNavigate();
 
-    const handleEventCreateSubmit = (e) => {
-        e.preventDefault();
-        // Create an object representing the request body
-        const requestBody = { name, numberOfGuests };
-        
-    }
+  const handleEventCreateSubmit = (e) => {
+    e.preventDefault();
+    // Create an object representing the request body
+    const requestBody = { name, numberOfGuests };
+  }
 
   return (
     <>
