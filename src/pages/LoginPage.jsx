@@ -31,7 +31,7 @@ function LoginPage() {
 
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/");
+        navigate("/event/create");
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;
