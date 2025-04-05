@@ -25,7 +25,7 @@ function App() {
         <Route path="/dashboard" element={<IsPrivate><Dashboard /></IsPrivate>} />
         <Route path="/admin/dashboard" element={<IsAdmin><Dash /></IsAdmin>} />
         <Route path="/login" element={<IsAnon><LoginPage /></IsAnon>} />
-        <Route path="/signup" element={<IsAnon><SignupPage /></IsAnon>} />
+        <Route path="/signup" element={<IsAnon><SignUpPage /></IsAnon>} />
       </Routes>
     </>
   )
