@@ -1,7 +1,7 @@
 function Header() {
   return (
     <header>
-      <h1>My Blog</h1>
+      <h1>Party Games Inc.</h1>
     </header>
   );
 }

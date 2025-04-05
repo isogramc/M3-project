@@ -37,7 +37,12 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(true);
           setIsLoading(false);
           setUser(user);
-          setIsAdminUser(user.role === "admin");
+          if(user.role === "admin") {
+            setIsAdminUser("true");
+          }else {
+            setIsAdminUser("false");
+          }
+          
         })
         .catch((error) => {
           if (error) {
@@ -49,14 +54,14 @@ function AuthProviderWrapper(props) {
           setIsLoggedIn(false);
           setIsLoading(false);
           setUser(null);
-          setIsAdminUser(null);
+          setIsAdminUser(false);
         });
     } else {
       // If the token is not available
       setIsLoggedIn(false);
       setIsLoading(false);
       setUser(null);
-      setIsAdminUser(null);
+      setIsAdminUser(false);
     }
   };
 

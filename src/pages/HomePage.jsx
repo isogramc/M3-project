@@ -1,5 +1,4 @@
 import { useState, useEffect } from "react";
-import axios from "axios";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
@@ -12,7 +11,6 @@ function HomePage() {
   return (
   <>
    <Header />
-
    <Button>Button</Button>
     <div className="home-page">
         <h1>Welcome to Party Games Inc.!</h1>
