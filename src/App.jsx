@@ -22,7 +22,7 @@ function App() {
       <Routes>
         <Route path="/" element={<IsAnon><HomePage /></IsAnon>} />
         <Route path="/event/create" element={<IsPrivate><EventCreatePage /></IsPrivate>} />
-        <Route path="/dashboard" element={<isPrivate><Dashboard /></isPrivate>} />
+        <Route path="/dashboard" element={<IsPrivate><Dashboard /></IsPrivate>} />
         <Route path="/admin/dashboard" element={<IsAdmin><Dash /></IsAdmin>} />
         <Route path="/login" element={<IsAnon><LoginPage /></IsAnon>} />
         <Route path="/signup" element={<IsAnon><SignupPage /></IsAnon>} />
