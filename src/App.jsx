@@ -3,7 +3,7 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import LoginPage from "./pages/LoginPage";
-import SignupPage from "./pages/SignupPage";
+import SignUpPage from "./pages/SignUpPage";
 import IsPrivate from "./components/IsPrivate";
 import IsAnon from "./components/IsAnon";
 import IsAdmin from "./components/IsAdmin";
