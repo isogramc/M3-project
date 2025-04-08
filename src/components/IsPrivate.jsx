@@ -2,13 +2,13 @@ import { useContext } from "react";
 import { AuthContext } from "../context/auth.context";
 import { Navigate } from "react-router-dom";
 
-function IsAdmin({ children }) {
-  const { isLoggedIn, isLoading, isAdminUser } = useContext(AuthContext);
+function IsPrivate({ children }) {
+  const { isLoggedIn, isLoading } = useContext(AuthContext);
 
   // If the authentication is still loading ⏳
   if (isLoading) return <p>Loading ...</p>;
 
-  if (!isLoggedIn && !isAdminUser) {
+  if (!isLoggedIn) {
   // If the user is not logged in ❌
     return <Navigate to="/login" />;
   } else {
@@ -17,4 +17,4 @@ function IsAdmin({ children }) {
   }
 }
 
-export default IsAdmin;
+export default IsPrivate;
