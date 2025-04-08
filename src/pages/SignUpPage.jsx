@@ -7,7 +7,7 @@ import axios from "axios";
 const API_URL = import.meta.env.VITE_API_URL;
 
 
-function SignupPage() {
+function SignUpPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [name, setName] = useState("");
@@ -116,4 +116,4 @@ function SignupPage() {
   )
 }
 
-export default SignupPage;
+export default SignUpPage;

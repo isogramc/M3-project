@@ -15,7 +15,7 @@ function LoginPage() {
 
   const navigate = useNavigate();
 
-  const { storeToken, authenticateUser } = useContext(AuthContext);
+  const { storeToken, authenticateUser, isAdminUser } = useContext(AuthContext);
 
   const handleEmail = (e) => setEmail(e.target.value);
   const handlePassword = (e) => setPassword(e.target.value);
@@ -31,7 +31,11 @@ function LoginPage() {
 
         storeToken(response.data.authToken);
         authenticateUser();
-        navigate("/event/create");
+
+        navigate("/dashboard");
+
+          //navigate("/create");
+        
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

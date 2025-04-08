@@ -5,10 +5,13 @@ import axios from "axios";
 // Import the string from the .env with URL of the API/server - http://localhost:5005
 const API_URL = import.meta.env.VITE_API_URL;
 
-function EventCreatePage() {
+const DEFAULT_FORM_VALUES = {
+  name: "",
+  numberOfGuests: ""
+}
 
-  const [numberOfGuests, setnumberOfGuests] = useState("");
-  const [name, setName] = useState("");
+function EventCreatePage() {
+  const [event, setEvent] = useState({ ...DEFAULT_FORM_VALUES });
   const [errorMessage, setErrorMessage] = useState(undefined);
 
   const navigate = useNavigate();
@@ -40,8 +43,8 @@ function EventCreatePage() {
           type="name"
           name="name"
           id="name"
-          value={name}
-          onChange={handleName}
+          value={eventName}
+          onChange={handleChange}
           className="border rounded p-2 w-full mb-6"
           autoComplete="off"
         />
