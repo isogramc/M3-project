@@ -27,15 +27,17 @@ function LoginPage() {
     axios
       .post(`${API_URL}/auth/login`, requestBody)
       .then((response) => {
+        console.log(response.data);
         console.log("JWT token", response.data.authToken);
 
         storeToken(response.data.authToken);
+
         authenticateUser();
-
-        navigate("/dashboard");
-
-          //navigate("/create");
         
+        setTimeout(() => {
+            navigate("/dashboard");
+        }, 1000);
+       
       })
       .catch((error) => {
         const errorDescription = error.response.data.message;

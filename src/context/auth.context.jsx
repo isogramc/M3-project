@@ -32,16 +32,21 @@ function AuthProviderWrapper(props) {
         })
         .then((response) => {
           // If the server verifies that JWT token is valid
-          const user = response.data;
+          const userVal = response.data;
+
+          console.log(userVal.role);
           // Update state variables
           setIsLoggedIn(true);
           setIsLoading(false);
-          setUser(user);
-          if(user.role === "admin") {
-            setIsAdminUser("true");
-          }else {
-            setIsAdminUser("false");
+          setUser(userVal);
+
+          console.log("user", userVal.role, userVal.role === "admin"); 
+
+          if(userVal.role === "admin") {
+            setIsAdminUser(true); 
           }
+
+          console.log("isAdminUser", isAdminUser);
           
         })
         .catch((error) => {
