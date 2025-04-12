@@ -34,11 +34,10 @@ function HomePage() {
         color="blue-gray"
         className="p-1 font-normal"
       >
-        <a href="#" className="flex items-center">
-          Blog
+        <a href="/blog" className="flex items-center">
+        Timeline
         </a>
-      </Typography>
-     
+      </Typography>  
     </ul>
   );
   
