@@ -58,7 +58,7 @@ export function Sidebar() {
           className="h-8 w-8"
         />
         <Typography variant="h5" color="blue-gray">
-          Sidebar
+          Welcome
         </Typography>
       </div>
       <List>
@@ -185,7 +185,7 @@ export function Sidebar() {
           Log Out
         </ListItem>
       </List>
-      <Alert
+      {/* <Alert
         open={openAlert}
         className="mt-auto"
         onClose={() => setOpenAlert(false)}
@@ -212,7 +212,7 @@ export function Sidebar() {
             Upgrade Now
           </Typography>
         </div>
-      </Alert>
+      </Alert> */}
     </Card>
   );
 }
