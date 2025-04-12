@@ -11,7 +11,6 @@ function Blog() {
     const [image, setImage] = useState("https://education-team-2020.s3.eu-west-1.amazonaws.com/web-dev/m3/tweet-user-photo.png");
     const [handle, setHandle] = useState("human");
 
-
     // this is the link to the LIVE SERVER
     const remote = `${import.meta.env.VITE_API_URL}/api/posts`;
 
@@ -34,8 +33,7 @@ function Blog() {
             if(result.status === 200) {
                 console.log(result.data.posts);
                 setBlogPostArray(result.data.posts);
-            }
-          
+            }  
          })
      }, []);
 

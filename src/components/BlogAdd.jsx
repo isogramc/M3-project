@@ -1,211 +1,106 @@
-// function BlogAdd(){
-//     return(
-//         <div className="CohortCreatePage p-8 pb-16 mb-10 mt-10 rounded-lg shadow-md flex flex-col h-full relative w-full max-w-3xl mx-auto">
-//     <div className="flex justify-center bg-white items-center mb-4 pt-8 absolute top-0 left-0 right-0 py-2 bg-gradient-to-r from-gray-200 via-gray-100 to-gray-200 border-b border-gray-300 shadow-sm"></div>
+import { useState, useEffect } from "react";
+import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-//       <form
-//         onSubmit={handleSubmit}
-//         className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
-//       >
-//         <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">
-//           Create Post
-//         </h3>
+function BlogAdd() {
+  // Import the string from the .env with URL of the API/server - http://localhost:5005
+  const API_URL = import.meta.env.VITE_API_URL;
 
-//         <label
-//           htmlFor="cohortSlug"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           User Id
-//         </label>
-//         <input
-//           type="text"
-//           name="cohortSlug"
-//           id="cohortSlug"
-//           value={cohort.cohortSlug}
-//           onChange={handleChange}
-//           disabled
-//           className="border rounded p-2 w-full mb-6"
-//         />
+  const DEFAULT_FORM_VALUES = {
+    userId: "67f986eb948492c2b8ab6d1d",
+    handle: "extra_bob",
+    message: "",
+  };
+  
+  const [post, setPost] = useState({ ...DEFAULT_FORM_VALUES });
 
-//         <label
-//           htmlFor="cohortName"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           Cohort Name
-//         </label>
-//         <input
-//           type="text"
-//           name="cohortName"
-//           id="cohortName"
-//           value={cohort.cohortName}
-//           onChange={handleChange}
-//           disabled
-//           className="border rounded p-2 w-full mb-6"
-//         />
+  const navigate = useNavigate();
 
-//         <label
-//           htmlFor="format"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           Format
-//         </label>
-//         <select
-//           name="format"
-//           id="format"
-//           value={cohort.format}
-//           onChange={handleChange}
-//           className="border rounded p-2 w-full mb-6 bg-gray-50"
-//         >
-//           <option value="">-- Select Format --</option>
-//           <option value="Full Time">Full Time</option>
-//           <option value="Part Time">Part Time</option>
-//         </select>
+  const handleChange = (e) => {
+   
+    const { name, value } = e.target;
+    console.log(name, value);
+    setPost((prevPost) => ({
+      ...prevPost,
+      [name]: value,
+    }));
+  };
 
-//         <label
-//           htmlFor="program"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           Program
-//         </label>
-//         <select
-//           name="program"
-//           id="program"
-//           value={cohort.program}
-//           onChange={handleChange}
-//           className="border rounded p-2 w-full mb-6 bg-gray-50"
-//         >
-//           <option value="">-- Select Program --</option>
-//           <option value="Web Dev">Web Development</option>
-//           <option value="UX/UI">UX/UI</option>
-//           <option value="Data Analytics">Data Analytics</option>
-//           <option value="Cybersecurity">Cybersecurity</option>
-//         </select>
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-//         <label
-//           htmlFor="campus"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           Campus
-//         </label>
-//         <select
-//           name="campus"
-//           id="campus"
-//           value={cohort.campus}
-//           onChange={handleChange}
-//           className="border rounded p-2 w-full mb-6 bg-gray-50"
-//         >
-//           <option value="">-- Select Campus --</option>
-//           <option value="Madrid">Madrid</option>
-//           <option value="Barcelona">Barcelona</option>
-//           <option value="Miami">Miami</option>
-//           <option value="Paris">Paris</option>
-//           <option value="Berlin">Berlin</option>
-//           <option value="Amsterdam">Amsterdam</option>
-//           <option value="Lisbon">Lisbon</option>
-//           <option value="Remote">Remote</option>
-//         </select>
+    const requestBody = {
+      ...post,
+    };
 
-//         <label
-//           htmlFor="startDate"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           Start Date:
-//         </label>
-//         <input
-//           type="date"
-//           name="startDate"
-//           id="startDate"
-//           value={cohort.startDate}
-//           onChange={handleChange}
-//           className="border rounded p-2 w-full mb-6 bg-gray-50 h-10"
-//         />
+    axios
+      .post(`${API_URL}/api/posts`, requestBody)
+      .then((response) => {
+        const newPost = response.data;
 
-//         <label
-//           htmlFor="endDate"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           End Date:
-//         </label>
-//         <input
-//           type="date"
-//           name="endDate"
-//           id="endDate"
-//           value={cohort.endDate}
-//           onChange={handleChange}
-//           className="border rounded p-2 w-full mb-6 bg-gray-50 h-10"
-//         />
+        navigate("/blog");
+      })
+      .catch((error) => console.log(error));
+  };
 
-//         <div className="flex items-center mt-6 mb-6">
-//           <label
-//             htmlFor="inProgress"
-//             className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//           >
-//             In Progress
-//           </label>
-//           <input
-//             type="checkbox"
-//             name="inProgress"
-//             id="inProgress"
-//             value={cohort.inProgress}
-//             onChange={handleChange}
-//             className="-left-24 mt-2 relative leading-tight"
-//           />
-//         </div>
+  return (
+    <div className="CohortCreatePage p-8 pb-16 mb-10 mt-10 rounded-lg shadow-md flex flex-col h-full relative w-full max-w-3xl mx-auto">
+      <div className="flex justify-center items-center mb-4 pt-8 absolute top-0 left-0 right-0 py-2 bg-gradient-to-r shadow-sm"></div>
 
-//         <label
-//           htmlFor="programManager"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           Program Manager
-//         </label>
-//         <input
-//           type="text"
-//           name="programManager"
-//           id="programManager"
-//           value={cohort.programManager}
-//           onChange={handleChange}
-//           className="border rounded p-2 w-full mb-6"
-//         />
+      <form
+        onSubmit={handleSubmit}
+        className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
+      >
+        <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">
+          Create Post
+        </h3>
 
-//         <label
-//           htmlFor="leadTeacher"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           Lead Teacher
-//         </label>
-//         <input
-//           type="text"
-//           name="leadTeacher"
-//           id="leadTeacher"
-//           value={cohort.leadTeacher}
-//           onChange={handleChange}
-//           className="border rounded p-2 w-full mb-6"
-//         />
+        <label
+          htmlFor="handle"
+          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
+        >
+          Handle
+        </label>
+        <input
+          type="text"
+          name="handle"
+          id="handle"
+          value={post.handle}
+          onChange={handleChange}
+          disabled
+          className="border rounded p-2 w-full mb-6"
+        />
 
-//         <label
-//           htmlFor="totalHours"
-//           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
-//         >
-//           Total Hours
-//         </label>
-//         <input
-//           type="number"
-//           name="totalHours"
-//           id="totalHours"
-//           value={cohort.totalHours}
-//           onChange={handleChange}
-//           className="border rounded p-2 w-full mb-6"
-//         />
+        <input
+          type="text"
+          name="userId"
+          id="userId"
+          value={post.userId}
+          hidden
+        />
 
-//         <button
-//           type="submit"
-//           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
-//         >
-//           Create Cohort
-//         </button>
-//       </form>
-//     </div>
-//     )
-// }
+        <label
+          htmlFor="message"
+          className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
+        >
+          Message
+        </label>
+        <textarea
+          name="message"
+          id="message"
+          onChange={handleChange}
+          className="border rounded p-2 w-full mb-6 h-20 bg-gray-50 text-black"
+        ></textarea>
 
-// export default BlogAdd;
+        <button
+          type="submit"
+          className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
+        >
+          Create Post
+        </button>
+      </form>
+    </div>
+  );
+}
+
+export default BlogAdd;

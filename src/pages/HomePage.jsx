@@ -135,12 +135,12 @@ function HomePage() {
         Welcome to Party Games Inc.!
         </Typography>
         <Typography color="gray" className="font-normal">
-        <p>Let us manage your event (birthday/cocktail party) on your behalf!</p>
-        <p>We specialize in scripted event based games that we stage for you at a time and a place of your choosing</p>
-        <p>The quoted price includes venue hire and snacks and we arrange an open bar made available on the evening at the standard prices</p>
-        <p>Each guest is given a character sheet and a goal. They are provided with a full event brief in their inbox well in advance</p>
-        <p>Each guest is expected to arrive as their character on the evening (costumes and props is their own responsibility even though suggestions are provided in the brief sheet)</p>
-        <p>Party Games Inc. takes care of the whole event and the scripted party storyline which allows you to enjoy your special evening free of care!</p>
+        <span>Let us manage your event (birthday/cocktail party) on your behalf!</span><br/>
+        <span>We specialize in scripted event based games that we stage for you at a time and a place of your choosing</span><br/>
+        <span>The quoted price includes venue hire and snacks and we arrange an open bar made available on the evening at the standard prices</span><br/>
+        <span>Each guest is given a character sheet and a goal. They are provided with a full event brief in their inbox well in advance</span><br/>
+        <span>Each guest is expected to arrive as their character on the evening (costumes and props is their own responsibility even though suggestions are provided in the brief sheet)</span><br/>
+        <span>Party Games Inc. takes care of the whole event and the scripted party storyline which allows you to enjoy your special evening free of care!</span><br/>
         </Typography>
       </div>
     </div>
