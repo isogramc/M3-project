@@ -42,7 +42,9 @@ function BlogEdit({id, message, setShownVal}) {
       .then((response) => {
         const editedPost = response.data;
 
-        setShownVal(false)
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1000);
       })
       .catch((error) => console.log(error));
   };

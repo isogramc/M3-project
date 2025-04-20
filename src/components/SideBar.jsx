@@ -37,6 +37,8 @@ export function Sidebar() {
 
   const { logOutUser } = useContext(AuthContext);
 
+  const navigate = useNavigate();
+
   const handleOpen = (value) => {
     setOpen(open === value ? 0 : value);
   };

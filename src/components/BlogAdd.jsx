@@ -42,7 +42,11 @@ function BlogAdd() {
       .then((response) => {
         const newPost = response.data;
 
-        navigate("/blog");
+        //navigate("/blog");
+
+        setTimeout(() => {
+          navigate("/dashboard");
+        }, 1000);
       })
       .catch((error) => console.log(error));
   };

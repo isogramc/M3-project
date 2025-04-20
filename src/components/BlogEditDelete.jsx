@@ -42,8 +42,11 @@ function BlogEditDelete(props) {
 
     axios
     .delete(`${API_URL}/api/posts/${id}`)
-    .then(() => navigate(`/dashboard`))
-    .catch((error) => console.log(error));
+    .then(() => {
+      setTimeout(() => {
+        navigate("/dashboard");
+      }, 1000);
+    }).catch((error) => console.log(error));
   };
 
   return (
