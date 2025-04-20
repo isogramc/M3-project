@@ -2,7 +2,7 @@ import React from "react";
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import Footer from "../components/Footer";
-import Header from "../components/Navbar";
+import { useNavigate } from "react-router-dom";
 
 // Import the string from the .env with URL of the API/server - http://localhost:5005
 // const API_URL = import.meta.env.VITE_API_URL;
@@ -18,6 +18,7 @@ import {
 
 function HomePage() {
   const [openNav, setOpenNav] = React.useState(false);
+  const navigate = useNavigate();
  
   React.useEffect(() => {
     window.addEventListener(
@@ -113,11 +114,11 @@ function HomePage() {
         <MobileNav open={openNav}>
           {navList}
           <div className="flex items-center gap-x-1">
-            <Button fullWidth variant="text" size="sm" className="">
-              <span>Log In</span>
+            <Button fullWidth variant="text" size="sm" className="" onClick={navigate("/login")}>
+              <span>Login</span>
             </Button>
-            <Button fullWidth variant="gradient" size="sm" className="">
-              <span>Sign in</span>
+            <Button fullWidth variant="gradient" size="sm" className="" onClick={navigate("/signup")}>
+              <span>Sign up</span>
             </Button>
           </div>
         </MobileNav>
