@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-function BlogAdd() {
+function BlogAdd({getPosts}) {
   // Import the string from the .env with URL of the API/server - http://localhost:5005
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -23,7 +23,7 @@ function BlogAdd() {
   const handleChange = (e) => {
    
     const { name, value } = e.target;
-    console.log(name, value);
+    //console.log(name, value);
     setPost((prevPost) => ({
       ...prevPost,
       [name]: value,
@@ -42,9 +42,10 @@ function BlogAdd() {
       .then((response) => {
         const newPost = response.data;
 
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 1000);
+        getPosts();
+        setPost({
+          message: "",
+        });
       })
       .catch((error) => console.log(error));
   };
@@ -81,7 +82,6 @@ function BlogAdd() {
           type="text"
           name="userId"
           id="userId"
-          value={post.userId}
           hidden
         />
 
@@ -94,6 +94,7 @@ function BlogAdd() {
         <textarea
           name="message"
           id="message"
+          value={post.message}
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 h-20 bg-gray-50 text-black"
         ></textarea>

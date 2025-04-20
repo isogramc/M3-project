@@ -50,13 +50,13 @@ function timestamp(props){
 
     function formatFunct() {
         if (timeObject.days > 0) {
-            return timeObject.days + ' days';
+            return timeObject.days + ' days ago';
         } else if (timeObject.hours > 0) {
-            return timeObject.hours + ' hours';
+            return timeObject.hours + ' hours ago';
         } else if (timeObject.minutes > 0) {
-            return timeObject.minutes + ' minutes';
+            return timeObject.minutes + ' minutes ago';
         } else if (timeObject.seconds > 0) {
-            return timeObject.seconds + ' seconds';
+            return timeObject.seconds + ' seconds ago';
         } else {
             return 'just now';
         }
@@ -65,7 +65,7 @@ function timestamp(props){
 
     return (
         <>
-            <p key={props.id} className="timestamp">{formatFunct()} ago</p>
+            <p key={props.id} className="timestamp">{formatFunct()} </p>
         </>
     );
 }

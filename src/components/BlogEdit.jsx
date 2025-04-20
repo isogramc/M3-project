@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-function BlogEdit({id, message, setShownVal}) {
+function BlogEdit({id, message, setDisplay}) {
   // Import the string from the .env with URL of the API/server - http://localhost:5005
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -42,9 +42,8 @@ function BlogEdit({id, message, setShownVal}) {
       .then((response) => {
         const editedPost = response.data;
 
-        setTimeout(() => {
-          navigate("/dashboard");
-        }, 1000);
+        setDisplay();
+        setPost({ ...DEFAULT_FORM_VALUES });
       })
       .catch((error) => console.log(error));
   };

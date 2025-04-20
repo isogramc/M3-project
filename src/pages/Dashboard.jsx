@@ -22,7 +22,7 @@ function Dashboard() {
       const remote = `${import.meta.env.VITE_API_URL}/api/posts`;
 
       async function getPosts() {
-        console.log("user", user._id, JSON.stringify(user));
+        //console.log("user", user._id, JSON.stringify(user));
 
           try { 
             return await axios({url: remote, 
@@ -41,13 +41,11 @@ function Dashboard() {
         useEffect(() => {
             getPosts().then(function (result) {
                if(result.status === 200) {
-                   console.log(result.data.posts);
+                   //console.log(result.data.posts);
                    setBlogPostArray(result.data.posts);
-               }
-             
+               }    
             })
-        }, []);
-
+        }, [blogPostArray]);
 
   return (
     <>
@@ -61,7 +59,7 @@ function Dashboard() {
             </Typography>
           </div>
 
-          <BlogAdd />
+          <BlogAdd getPosts={getPosts}/>
         </div>
         <div className="flex flex-col items-center justify-center min-h-screen px-8">
           <p>
@@ -79,6 +77,7 @@ function Dashboard() {
                   handle={handle}
                   time={blog?.Timestamp}
                   message={blog?.message}
+                  getPosts={getPosts}
                 />
               ))}
           </div>

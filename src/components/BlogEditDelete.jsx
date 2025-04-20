@@ -26,10 +26,9 @@ function BlogEditDelete(props) {
   const [post, setPost] = useState({ ...DEFAULT_FORM_VALUES });
   const [show, setShow] = useState(false);
 
-  const {id, userId, name, handle, image, time, message } = props;
+  const {id, userId, name, handle, image, time, message, getPosts } = props;
 
   const handleEdit = () => {
-
     setShow(!show);
   };
 
@@ -43,9 +42,7 @@ function BlogEditDelete(props) {
     axios
     .delete(`${API_URL}/api/posts/${id}`)
     .then(() => {
-      setTimeout(() => {
-        navigate("/dashboard");
-      }, 1000);
+      getPosts();
     }).catch((error) => console.log(error));
   };
 
@@ -66,7 +63,7 @@ function BlogEditDelete(props) {
 
       {show && (
         <div className="flex items-center gap-x-1">
-          <BlogEdit id={id} message={message} />
+          <BlogEdit id={id} message={message} setDisplay={handleEdit}/>
         </div>
       )}
 
