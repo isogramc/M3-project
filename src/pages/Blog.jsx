@@ -43,7 +43,7 @@ function Blog() {
 
 
   return (
-    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
+    <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100 px-4">
       <h1 className="text-4xl font-bold mb-4 text-black">Welcome to the Timeline</h1>
       <p className=" text-black">Here you will receive real time notifications while attending your event.</p>
       <div>
