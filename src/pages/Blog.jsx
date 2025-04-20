@@ -1,6 +1,6 @@
 import "../App.css";
 import BlogPost from "../components/BlogPost";
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios";
 
 function Blog() {
@@ -54,7 +54,7 @@ function Blog() {
             name={name}
             image={image}
             handle={handle}
-            time={blog?.timestamp}
+            time={blog?.Timestamp}
             message={blog?.message}
           />
         ))}

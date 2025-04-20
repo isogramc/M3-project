@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../context/auth.context";
 
-function BlogAdd() {
+function BlogEdit({id, message, setShownVal}) {
   // Import the string from the .env with URL of the API/server - http://localhost:5005
   const API_URL = import.meta.env.VITE_API_URL;
 
@@ -11,9 +11,9 @@ function BlogAdd() {
   const [userIdVal, setUserIdVal] = useState(user._id);
 
   const DEFAULT_FORM_VALUES = {
-    userId: userIdVal,
+    _id: id,
     handle: "extra_bob",
-    message: "",
+    message: message,
   };
   
   const [post, setPost] = useState({ ...DEFAULT_FORM_VALUES });
@@ -23,7 +23,7 @@ function BlogAdd() {
   const handleChange = (e) => {
    
     const { name, value } = e.target;
-    console.log(name, value);
+    //console.log(name, value);
     setPost((prevPost) => ({
       ...prevPost,
       [name]: value,
@@ -38,11 +38,11 @@ function BlogAdd() {
     };
 
     axios
-      .post(`${API_URL}/api/posts`, requestBody)
+      .put(`${API_URL}/api/posts/${post._id}`, requestBody)
       .then((response) => {
-        const newPost = response.data;
+        const editedPost = response.data;
 
-        navigate("/blog");
+        setShownVal(false)
       })
       .catch((error) => console.log(error));
   };
@@ -56,7 +56,7 @@ function BlogAdd() {
         className="grid grid-cols-1 gap-4 overflow-y-auto mt-12 px-4"
       >
         <h3 className="text-2xl font-semibold text-gray-700 mb-6 sticky left-0">
-          Create Post
+          Edit Post
         </h3>
 
         <label
@@ -92,6 +92,7 @@ function BlogAdd() {
         <textarea
           name="message"
           id="message"
+          value={post.message}
           onChange={handleChange}
           className="border rounded p-2 w-full mb-6 h-20 bg-gray-50 text-black"
         ></textarea>
@@ -100,11 +101,11 @@ function BlogAdd() {
           type="submit"
           className="bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded mt-4 transition duration-150 ease-in-out"
         >
-          Create Post
+          Edit Post
         </button>
       </form>
     </div>
   );
 }
 
-export default BlogAdd;
+export default BlogEdit;
