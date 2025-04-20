@@ -52,7 +52,7 @@ function BlogEditDelete(props) {
   return (
     <div key={time} className="flex flex-col blog-post">
       <div className="w-full p-4">
-        <div className="flex flex-row text-amber-950">
+        <div className="flex flex-row text-gray-100">
           <ProfileImage id={id} image={image} />
           <div>
             <div className="flex flex-row">

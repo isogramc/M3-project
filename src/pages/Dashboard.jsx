@@ -51,19 +51,20 @@ function Dashboard() {
 
   return (
     <>
-      <div className="w-[calc(100%+48px)] flex flex-row">
+      <div className="w-full flex flex-row">
         <Sidebar />
-        <div className=" flex flex-col">
-          <div className="ml-4 py-4">
-            <Typography variant="h1" color="blue-gray">
+        <div className="flex flex-col px-8">
+
+          <div className="mt-4 flex items-center justify-center gap-4 p-4">
+            <Typography variant="h3" color="blue-gray">
               Dashboard
             </Typography>
           </div>
 
           <BlogAdd />
         </div>
-        <div className="flex flex-col items-center justify-center min-h-screen bg-gray-100">
-          <p className=" text-black">
+        <div className="flex flex-col items-center justify-center min-h-screen px-8">
+          <p>
             Here you will see your own posts and you will be able to update or
             delete them.
           </p>
