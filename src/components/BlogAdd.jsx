@@ -42,8 +42,6 @@ function BlogAdd() {
       .then((response) => {
         const newPost = response.data;
 
-        //navigate("/blog");
-
         setTimeout(() => {
           navigate("/dashboard");
         }, 1000);
@@ -63,7 +61,7 @@ function BlogAdd() {
           Create Post
         </h3>
 
-        <label
+        {/* <label
           htmlFor="handle"
           className="text-gray-600 text-left ml-1 -mb-2 text-l font-bold"
         >
@@ -77,7 +75,7 @@ function BlogAdd() {
           onChange={handleChange}
           disabled
           className="border rounded p-2 w-full mb-6"
-        />
+        /> */}
 
         <input
           type="text"
